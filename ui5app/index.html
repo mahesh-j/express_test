@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script id="sap-ui-bootstrap"
+                src="https://openui5.netweaver.ondemand.com/resources/sap-ui-core.js"
+                data-sap-ui-libs="sap.m"
+                data-sap-ui-theme="sap_belize"
+                data-sap-ui-preload="async"
+                data-sap-ui-resourceroots='{
+                    "org.mah.app" : "."
+                }'>
+        </script>
+        <script>
+            new sap.ui.getCore().attachInit(() => {
+                sap.ui.require(['sap/ui/core/ComponentContainer'],function(ComponentContainer){
+                    new ComponentContainer({
+                       name : 'org.mah.app'
+                    }).placeAt('content');
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content"/>
+    </body>
+</html>

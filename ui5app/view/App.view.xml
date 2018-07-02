@@ -1,0 +1,11 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
+    <App>
+        <pages>
+            <Page title="{i18n>appTitle}">
+                <content>
+                    <mvc:XMLView viewName="org.mah.app.view.Employee"/>
+                </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>
