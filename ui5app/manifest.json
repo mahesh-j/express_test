@@ -13,7 +13,7 @@
 
         "dataSources" : {
             "employee" : {
-                "uri" : "/models/json/Employee.json",
+                "uri" : "./models/json/Employee.json",
                 "type" : "JSON"
             }
         }

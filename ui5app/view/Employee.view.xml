@@ -1,3 +1,52 @@
 <mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" controllerName="org.mah.app.controller.Employee">
-    <Text text="Hello Employee"/>
+    <Table items="{employee>/Employees}">
+        <columns>
+            <Column>
+                <Text text="Emp Id"/>
+            </Column>
+            <Column>
+                <Text text="First Name"/>
+            </Column>
+            <Column>
+                <Text text="Last Name"/>
+            </Column>
+            <Column>
+                <Text text="Email Id"/>
+            </Column>
+            <Column>
+                <Text text="Sex"/>
+            </Column>
+            <Column>
+                <Text text="Date of Birth"/>
+            </Column>
+            <Column>
+                <Text text="Age"/>
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <Text text="{employee>id}"/>
+                    <Text text="{employee>first_name}"/>
+                    <Text text="{employee>last_name}"/>
+                    <Text text="{employee>email}"/>
+                    <Text text="{employee>gender}"/>
+                    <Text text="{ 
+                                    path : 'employee>dob', 
+                                    type : 'sap.ui.model.type.DateTime',
+                                    formatOptions:  {
+                                        source : {
+                                            pattern : 'MM/dd/yyyy'
+                                        },
+                                        pattern : 'dd-MMM-yyyy'
+                                    }
+                                }"/>
+                    <Text text="{
+                                    path : 'employee>dob', 
+                                    formatter : '.formatter.age'
+                                }"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
 </mvc:View>
