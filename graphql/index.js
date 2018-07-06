@@ -1,25 +1,36 @@
-const { GraphQLServer } = require('graphql-yoga');
+
+const express = require('express');
+const bodyParser = require("body-parser");
+const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
+const { makeExecutableSchema } = require('graphql-tools');
+
+const { resolvers } = require('./resolver.js');
+const { typeDefs  } = require('./schema.js');
+
 const fs = require('fs');
 
-let employees = JSON.parse(fs.readFileSync('./ui5app/models/json/Employee.json'));
+// var resolvers = {
+//     Query: {
+//         getEmployees: (_, { first }) => {
+//             let employees = JSON.parse(fs.readFileSync('./graphql/Employee.json'));
+//             if (first) {
+//                 var emp = [];
+//                 for (var i = 0; i < first; i++)
+//                     emp.push(employees.Employees[i]);
+//                 return emp;
+//             } else
+//                 return employees.Employees
+//         }
+//     }
+// }
 
-const resolvers = {
-    Query : {
-        getEmployees : (root, args) => { 
-                if(args.first) {
-                    var emp = [];
-                    for (var i = 0; i < args.first; i++)
-                        emp.push(employees.Employees[i]);
-                    return emp;
-                } else 
-                    return employees.Employees 
-            }
-    }
-}
-
-const server = new GraphQLServer({
-    typeDefs : './graphql/schema.graphql',
+var schema = makeExecutableSchema({
+    typeDefs,
     resolvers
 });
 
-server.start(() => console.log('GraphQL Server started at http://localhost:4000'));
+const server = express();
+server.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
+server.use('/graphiql', graphiqlExpress({ endpointURL : '/graphql' }));
+
+server.listen(3001),() => console.log('GraphQL Server started at http://localhost:3001');

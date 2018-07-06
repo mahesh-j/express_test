@@ -1,0 +1,16 @@
+module.exports = {
+    typeDefs : `type Query {
+            getEmployees(first: Int): [Employee!]!
+        }
+
+        scalar Date
+
+        type Employee {
+            id: ID!
+            first_name: String!
+            last_name: String!
+            email: String!
+            gender: String!
+            dob: Date!
+        }`
+}
