@@ -7,7 +7,8 @@
     "test": "node server.js"
   },
   "dependencies": {
-    "express": "4.16.3"
+    "express": "^4.16.3",
+    "node-rfc": "^0.1.16"
   },
   "keywords": [
     "Express"
