@@ -17,7 +17,17 @@ var schema = makeExecutableSchema({
 
 const server = express();
 
-server.use('/graphql', cors(), bodyParser.json(), graphqlExpress({ schema }));
+server.use('/graphql', 
+    cors(), 
+    bodyParser.json(), 
+    graphqlExpress(req => { 
+        return {
+            schema: schema,
+            context: {
+                value : req
+            }
+        }
+    }));
 server.use('/graphiql', graphiqlExpress({ endpointURL : '/graphql' }));
 
 server.listen(3001,() => console.log('GraphQL Server started at http://localhost:3001'));
