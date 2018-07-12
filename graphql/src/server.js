@@ -19,7 +19,7 @@ const server = express();
 
 server.use('/graphql', 
     cors(), 
-server.use('/graphql', cors(), bodyParser.json(), graphqlExpress({ schema }));
+    bodyParser.json(), 
     graphqlExpress(req => { 
         return {
             schema: schema,
