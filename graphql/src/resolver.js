@@ -3,7 +3,7 @@ const fs = require('fs');
 module.exports = {
     resolvers: {
         Query: {
-            getEmployees: (_, { first }) => {
+            getEmployees: (test, { first }, context) => {
                 let employees = JSON.parse(fs.readFileSync('./src/Employee.json'));
                 if (first) {
                     var emp = [];

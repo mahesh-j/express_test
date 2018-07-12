@@ -15,7 +15,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch GraphQL",
-            "program": "${workspaceFolder}/graphql/index.js"
+            "program": "${workspaceFolder}\\graphql\\src\\server.js"
         }
     ]
 }

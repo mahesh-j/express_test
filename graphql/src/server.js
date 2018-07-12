@@ -12,7 +12,10 @@ const fs = require('fs');
 
 var schema = makeExecutableSchema({
     typeDefs,
-    resolvers
+    resolvers,
+    context : ({req}) => {
+        request : req
+    }
 });
 
 const server = express();
